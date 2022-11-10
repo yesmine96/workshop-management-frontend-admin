@@ -10,9 +10,12 @@ import Trainer from './Trainer';
 
 import HomeContainer from './Home';
 import LoginContainer from './Login/LoginContainer';
+import RenewPassword from './Login/RenewPassword';
+
 import AddTraining from './Training/AddTraining';
 import Training from './Training/Training';
 import DetailsTraining from './Training/DetailsTraining';
+import GestionProfil from './GestionProfil';
 
 const RootContainer = () => {
   const [user, setUser] = useState(null as User | null);
@@ -32,8 +35,10 @@ const RootContainer = () => {
         ))}
 
         <Route path="/DetailsTraining/:id" exact component={DetailsTraining} />
-
         <Route protected header={false} path="/login" exact component={LoginContainer} />
+
+        <Route protected path="/gestionprofil" exact component={GestionProfil} />
+        <Route protected header={false} path="/RenewPassword" exact component={RenewPassword} />
       </Switch>
     </UserContext.Provider>
   );

@@ -92,33 +92,46 @@ const AddTraining = () => {
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
-      // name: Yup.string().trim().required('Veuillez saisir le nom du produit'),
-      // membersNumber: Yup.number()
-      //   .integer(`Ce champ n'aacepte que les nombres entiers`)
-      //   .required('Veuillez saisir une quantité')
-      //   .min(0, 'Veuillez saisir une quantité supérieur à 0'),
-      // price: Yup.number().required('Veuillez saisir le prix de vente"').min(1, 'Veuillez saisir un prix supérieur à 0'),
+      name: Yup.string().trim().required('Veuillez saisir le nom de la formation'),
+      membersNumber: Yup.number()
+        .integer(`Ce champ n'aacepte que les nombres entiers`)
+        .required('Veuillez saisir une quantité')
+        .min(0, 'Veuillez saisir une quantité supérieur à 0'),
+      price: Yup.number()
+        .required('Veuillez saisir le prix de la formation"')
+        .min(1, 'Veuillez saisir un prix supérieur à 0'),
+      dateStart: Yup.date()
+        .required('Veuillez indiquer la date de début ')
+        .min(
+          moment(new Date(), 'x').format('DD MMMM YYYY'),
+          "La date doit être égale ou supérieure à la date d'aujourd'hui",
+        ),
+      dateEnd: Yup.date()
+        .required('Veuillez indiquer la date de fin')
+        .min(Yup.ref('dateStart'), `La date du fin doit être supérieur à la date de début`),
     }),
 
     onSubmit: (values) => {
       createTraining({
         variables: { ...values, image: fileUpload },
-      }).then(() => {
-        console.log('heu');
-      });
+      }).then(() => {});
     },
   });
   return (
     <div className="flex flex-col w-full  lg:px-8 bg-grey-200 ">
+      <div>
+        <h1 className="font-medium text-[30px] ">Ajouter une formation</h1>
+      </div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           formik.handleSubmit(e);
         }}
+        className="pt-4"
       >
         <div className="flex flex-col w-full">
           <div className="flex flex-row sm:flex-col">
-            <div className="flex flex-col mr-10 sm:w-full flex-[0.5]    ">
+            <div className="flex flex-col mr-10 sm:w-full flex-[0.5] justify-between    ">
               <div className="w-full mb-7">
                 <div className="text-blue font-CalibreSemiBold  2xl:mb-1 md:text-17 lg:text-17 text-22 2xl:text-base">
                   Photos de la formation *
@@ -150,14 +163,14 @@ const AddTraining = () => {
                         <div className="flex flex-row justify-center cursor-pointer">
                           <div className="font-CalibreRegular text-sm text-grey-500 opacity-70 mt-1">
                             {' '}
-                            Télécharger minimum une photo de votre produit{' '}
+                            Télécharger minimum une photo de la formation{' '}
                           </div>
                         </div>
                       ) : (
                         <div className="flex flex-col justify-center cursor-pointer">
                           <div className="font-CalibreRegular text-sm text-grey-500 opacity-70 mt-1">
                             {' '}
-                            Télécharger minimum une photo de votre produit{' '}
+                            Télécharger minimum une photo de la formation{' '}
                           </div>
                         </div>
                       )}
@@ -189,26 +202,29 @@ const AddTraining = () => {
                   textarea
                   name="description"
                   rows={5}
-                  placeholder="Décrivez votre produit.."
+                  placeholder="Décrivez la formation.."
                   value={formik.values.description}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   error={formik.errors.description}
                   handleError
+                  labelClassName="text-black font-CalibreSemiBold"
                 />
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-3 flex-col w-full h-3/4 flex-[0.5]" style={{ maxHeight: '650px' }}>
+            <div className="grid grid-cols-2 gap-8 flex-col w-full h-3/4 flex-[0.5]" style={{ maxHeight: '650px' }}>
               <Input
-                label="Nom du produit *"
+                label="Nom de la formation *"
                 type="text"
                 name="name"
-                placeholder="Nom du produit"
+                placeholder="Nom de la formation"
                 value={formik.values.name}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={formik.touched.name ? formik.errors.name : ''}
                 handleError
+                labelClassName="text-black font-CalibreSemiBold
+                "
               />
 
               <Input
@@ -222,18 +238,20 @@ const AddTraining = () => {
                 onBlur={formik.handleBlur}
                 error={formik.touched.price ? formik.errors.price : ''}
                 handleError
+                labelClassName="text-black font-CalibreSemiBold"
               />
 
               <Input
-                label="Disponibilité du produit *"
+                label="Nombre de places *"
                 type="number"
                 name="membersNumber"
-                placeholder="Quantité de produits disponibles"
+                placeholder="Nombre de places *"
                 value={formik.values.membersNumber}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={formik.errors.membersNumber}
                 handleError
+                labelClassName="text-black font-CalibreSemiBold	"
               />
 
               <Select
@@ -242,7 +260,7 @@ const AddTraining = () => {
                 name="idCategory"
                 isMulti={Boolean(false)}
                 labelSelect="Catégorie *"
-                placeholder="Sélectionnez une catégorie"
+                placeholder="Catégorie"
                 error={
                   formik.touched.idCategory && idCategory.length === 0 ? 'Veuillez sélectionner une catégorie  ' : ''
                 }
@@ -252,16 +270,22 @@ const AddTraining = () => {
                 isDisabled={!idCategory.length}
                 options={transformSelect(dataSubCategoty?.subCategorys.data)}
                 onChange={handleChangeSubCategory}
-                name="idSubCategories"
-                labelSelect="Sous-Catégorie"
-                placeholder="Sélectionnez une sous-catégorie"
-                values={idSubCategory}
+                name="idSubCategory"
+                labelSelect="Sous-Catégorie *"
+                placeholder="sous-catégorie"
+                // values={idSubCategory}
                 isMulti={Boolean(false)}
+                error={
+                  formik.touched.idCategory && idCategory.length === 0
+                    ? 'Veuillez sélectionner une sous-catégorie  '
+                    : ''
+                }
+                handleError
               />
               <Select
-                labelSelect="Formateur"
+                labelSelect="Formateur *"
                 options={transformSelect(dataTrainer?.trainers?.data)}
-                labelClassname=" font-medium text-[20px] text-[black] "
+                labelClassname=" text-blue undefined font-CalibreSemiBold  2xl:mb-1 md:text-17 lg:text-17 text-20 2xl:text-20 flex items-center"
                 onChange={(data: any) => {
                   formik.setFieldValue('idTrainer', data.value);
                 }}
@@ -270,17 +294,28 @@ const AddTraining = () => {
                 placeholder="Formateur"
                 handleError
                 closeMenuOnSelect
+                error={
+                  formik.touched.idCategory && idCategory.length === 0 ? 'Veuillez sélectionner un formateur  ' : ''
+                }
               />
-              <DatePickerInput
-                value={formik.values.dateStart}
-                name="dateStart"
-                onChange={(date) => formik.setFieldValue('dateStart', date)}
-              />
-              <DatePickerInput
-                value={formik.values.dateEnd}
-                name="dateEnd"
-                onChange={(date) => formik.setFieldValue('dateEnd', date)}
-              />
+              <div>
+                <span>Date de début *</span>
+                <DatePickerInput
+                  value={formik.values.dateStart}
+                  name="dateStart"
+                  onChange={(date) => formik.setFieldValue('dateStart', date)}
+                  showTimeSelect
+                />
+              </div>
+              <div>
+                <span>Date de fin *</span>
+                <DatePickerInput
+                  value={formik.values.dateEnd}
+                  name="dateEnd"
+                  onChange={(date) => formik.setFieldValue('dateEnd', date)}
+                  showTimeSelect
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -46,7 +46,7 @@ export default function TableTrainer() {
       dataIndex: 'fullName',
       key: 'fullName',
       render: (_, { fullName }) => (
-        <p className=" text-[#818181] text-[18px] max-w-xs overflow-ellipsis whitespace-nowrap overflow-hidden ">
+        <p className=" text-[#818181] text-[14px] max-w-xs overflow-ellipsis whitespace-nowrap overflow-hidden ">
           {fullName}
         </p>
       ),
@@ -57,7 +57,7 @@ export default function TableTrainer() {
       key: 'email',
       className: 'text-center',
       render: (_, { email }) => (
-        <p className=" text-[#818181] text-[18px] max-w-xs overflow-ellipsis whitespace-nowrap overflow-hidden text-center">
+        <p className=" text-[#818181] text-[14px] max-w-xs overflow-ellipsis whitespace-nowrap overflow-hidden text-center">
           {email}
         </p>
       ),
@@ -68,7 +68,7 @@ export default function TableTrainer() {
       key: 'telephone',
       className: 'text-center',
       render: (_, { telephone }) => (
-        <p className=" text-[#818181] text-[18px] max-w-xs overflow-ellipsis whitespace-nowrap overflow-hidden text-center">
+        <p className=" text-[#818181] text-[14px] max-w-xs overflow-ellipsis whitespace-nowrap overflow-hidden text-center">
           {telephone}
         </p>
       ),
@@ -79,7 +79,7 @@ export default function TableTrainer() {
       key: 'speciality',
       className: 'text-center',
       render: (_, { speciality }) => (
-        <p className=" text-[#818181] text-[18px] max-w-xs overflow-ellipsis whitespace-nowrap overflow-hidden text-center">
+        <p className=" text-[#818181] text-[14px] max-w-xs overflow-ellipsis whitespace-nowrap overflow-hidden text-center">
           {speciality?.name}
         </p>
       ),

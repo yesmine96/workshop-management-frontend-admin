@@ -32,7 +32,7 @@ const InputWrapper: FunctionComponent<TextFieldProps> = ({
 }) => {
   return (
     <div className={classNames('pb-3', 'w-full relative')}>
-      {label && <div className={`text-blue text-md font-regular mb-1 md:text-sm ${labelClassName}`}>{label}</div>}
+      {label && <div className={`text-[#00458b] text-md font-regular mb-1 md:text-sm ${labelClassName}`}>{label}</div>}
       <div className="flex justify-center items-center relative">
         {iconLeft && (
           <div className={classNames('absolute inset-y-0 left-5 flex items-center justify-center', classes.iconsLeft)}>

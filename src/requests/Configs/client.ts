@@ -1,16 +1,10 @@
 /* eslint-disable no-console */
-import {
-  ApolloClient,
-  ApolloLink,
-  InMemoryCache,
-  Observable,
-  Operation,
-} from "@apollo/client";
-import { onError } from "@apollo/client/link/error";
-import { createUploadLink } from "apollo-upload-client";
-import { config } from "dotenv";
+import { ApolloClient, ApolloLink, InMemoryCache, Observable, Operation } from '@apollo/client';
+import { onError } from '@apollo/client/link/error';
+import { createUploadLink } from 'apollo-upload-client';
+import { config } from 'dotenv';
 config();
-let token = "";
+let token = '';
 
 export function setAuthorizationBearer(nextToken: string) {
   token = nextToken;
@@ -19,7 +13,7 @@ export function setAuthorizationBearer(nextToken: string) {
 const request = async (operation: Operation) => {
   const hearder = {
     headers: {
-      Authorization: token ? `Bearer ${token}` : "",
+      Authorization: token ? `Bearer ${token}` : '',
     },
   };
 
@@ -43,7 +37,7 @@ const requestLink = new ApolloLink(
       return () => {
         if (handle) handle.unsubscribe();
       };
-    })
+    }),
 );
 
 export const client = new ApolloClient({
@@ -52,15 +46,13 @@ export const client = new ApolloClient({
     onError(({ graphQLErrors, networkError }) => {
       if (graphQLErrors) {
         graphQLErrors.forEach(({ message, locations, path }) =>
-          console.log(
-            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-          )
+          console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`),
         );
       }
       if (networkError) console.log(`[Network error]: ${networkError}`);
     }),
     createUploadLink({
-      uri: process.env.REACT_APP_BACKEND_URL || "http://localhost:3005/graphql",
+      uri: process.env.REACT_APP_BACKEND_URL || 'http://localhost:3005/graphql',
     }),
   ]),
   cache: new InMemoryCache({

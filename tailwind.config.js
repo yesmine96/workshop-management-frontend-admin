@@ -30,7 +30,7 @@ module.exports = {
       },
 
       orange: {
-        DEFAULT: '#E56E1B',
+        DEFAULT: '#00458b',
       },
       purple: {
         DEFAULT: '#C0AFE0',

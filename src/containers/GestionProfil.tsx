@@ -12,7 +12,7 @@ import sdcLogo from 'assets/png/logo.png';
 import { useLogin } from 'requests/Auth/auth';
 import * as yup from 'yup';
 import ModalResetPassword from 'components/Modals/ModalResetPassword';
-const LoginContainer = () => {
+const GestionProfil = () => {
   const { user } = useContext(UserContext);
   const [stayConnected, setstayConnected] = useState(false);
   const [loginCall] = useAuth(useLogin);
@@ -25,7 +25,7 @@ const LoginContainer = () => {
     handleSubmit,
   } = useFormik({
     initialValues: {
-      username: '',
+      username: 'yesmine.ghorbel96@gmail.com',
       password: '',
     },
     validationSchema: yup.object({
@@ -52,10 +52,8 @@ const LoginContainer = () => {
       <div className="flex items-center justify-center flex-1 bg-white">
         <div className="login-section flex flex-col gap-12 min-w-[500px] ">
           <div className="flex flex-col gap-8 justify-center items-center">
-            <img alt="sidebar_mig" src={sdcLogo} className="pt-[15px]" />
-
             <div className="text-center">
-              <p className="text-xl font-medium text-blue">Connexion</p>
+              <p className="text-xl font-medium text-blue">Gestion de profil</p>
             </div>
           </div>
           <form className="flex items-center flex-col justify-center gap-16 " onSubmit={handleSubmit}>
@@ -81,23 +79,34 @@ const LoginContainer = () => {
                 placeholder="Votre mot de passe"
                 type="password"
               />
-              <div className="flex justify-between	 ">
-                <CheckBox
-                  labelclassName="text-[#818181] text-sm"
-                  onChecked={(v) => setstayConnected(v)}
-                  label="Se souvenir de moi"
-                />
-
-                <span className="text-[#818181] text-sm" onClick={() => setShowModal(true)}>
-                  Mot de passe oublié?
-                </span>
-              </div>
+              <Input
+                errorClassName="text-[#FF4040]"
+                labelClassName="font-semibold"
+                label="Nouveau mot de passe*"
+                className="border-none"
+                value={password}
+                error={errors.password}
+                onChange={handleChange('password')}
+                placeholder="Votre nouveau mot de passe"
+                type="password"
+              />
+              <Input
+                errorClassName="text-[#FF4040]"
+                labelClassName="font-semibold"
+                label="Confirmer nouveau mot de passe*"
+                className="border-none"
+                value={password}
+                error={errors.password}
+                onChange={handleChange('password')}
+                placeholder="Confirmer nouveau mot de passe"
+                type="password"
+              />
             </div>
             <Button
               size="none"
               className="bg-[#00458b] text-sm hover:bg-[#E56E1B7d] font-bold text-white rounded-xl px-4 py-3"
             >
-              Se connecter
+              Valider
             </Button>
             <ModalResetPassword showModal={showModal} setShowModal={setShowModal} />
           </form>
@@ -107,4 +116,4 @@ const LoginContainer = () => {
   );
 };
 
-export default LoginContainer;
+export default GestionProfil;

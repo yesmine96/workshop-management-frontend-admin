@@ -3,5 +3,7 @@ export interface ItrainingParticipation {
     id: string;
     email: string;
     fullName: string;
+    telephone: string;
   };
+  valid: Boolean;
 }

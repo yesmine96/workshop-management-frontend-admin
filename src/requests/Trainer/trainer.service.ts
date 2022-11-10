@@ -20,6 +20,9 @@ const GET_Trainers = gql`
     trainers(speciality: $speciality, availablity: $availablity) {
       data {
         ...Trainer
+        speciality {
+          name
+        }
       }
     }
   }

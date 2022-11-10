@@ -30,7 +30,7 @@ export default function ProfileDropDown() {
         onClick={() => setOpen(!open)}
         ref={divRef}
       >
-        <p className="text-xl">M</p>
+        <p className="text-xl">Y</p>
         <ArrowDown />
       </div>
 
@@ -44,8 +44,7 @@ export default function ProfileDropDown() {
       >
         <div className="min-w-[200px] flex flex-col gap-4 bg-[#FFFFFF] shadow-dropdown_2 p-[32px] rounded-xl">
           <div>
-            <p className="font-semibold text-base">Nom et prénom</p>
-            <p className="text-sm text-gray">Nom de la sociéte</p>
+            <p className="font-semibold text-base">Yesmine Ghorbel</p>
           </div>
           <div
             onClick={() => history.push('/gestionprofil')}
@@ -54,13 +53,7 @@ export default function ProfileDropDown() {
             <SettingIcon />
             <p className="text-sm">Profil</p>
           </div>
-          <div
-            onClick={() => history.push('/parametrage')}
-            className=" cursor-pointer hover:text-gray flex items-center gap-[17px]"
-          >
-            <SettingIcon />
-            <p className="text-sm">Paramétrage</p>
-          </div>
+
           <div
             onClick={() => {
               logoutCall();

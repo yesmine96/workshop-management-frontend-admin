@@ -27,7 +27,7 @@ export const GET_TRAINING = gql`
     training(id: $id) {
       ...Training
       idCategory {
-        ic
+        id
         name
       }
       idSubCategories {

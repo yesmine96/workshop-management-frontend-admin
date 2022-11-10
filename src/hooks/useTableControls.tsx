@@ -73,9 +73,9 @@ function useTableControls<T extends { id: string }>(
         onMultipleDelete && values.some((v) => v.checked) ? (
           <button
             onClick={() => onMultipleDelete(values.filter((item) => item.checked).map((item) => item.id))}
-            className="bg-pink-600 hover:bg-pink-700 text-white h-10 font-bold py-2 px-4 h-10 rounded focus:outline-none focus:shadow-outline"
+            className="bg-[#E56E1B] hover:bg-pink-700 text-white h-10 font-bold py-2 px-4 h-10 rounded focus:outline-none focus:shadow-outline"
           >
-            Delete all
+            Supprimer
           </button>
         ) : (
           ''

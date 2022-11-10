@@ -28,8 +28,8 @@ const DeleteModal: FC<DeleteModalProps> = ({ onClose, deleteCall, id, msg }) => 
           <div className="text-2xl py-9 text-blue font-CalibreSemiBold  text-center ">{msg}</div>
           <div className="flex gap-4 w-5/6">
             <Button
-              className="cursor-pointer flex-1 w-auto bg-blue-100 text-white
-              duration-300 hover:border-blue-100 hover:bg-white hover:text-blue-100 hover:border hover:border-blue-100"
+              className="cursor-pointer flex-1 w-auto bg-[#00458b] text-white
+              duration-300 hover:border-blue-100 hover:bg-white hover:text-[#00458b] hover:border hover:border-blue-100"
               onClick={() => {
                 onDelete();
               }}
@@ -38,7 +38,7 @@ const DeleteModal: FC<DeleteModalProps> = ({ onClose, deleteCall, id, msg }) => 
             </Button>
             <Button
               className="
-           border border-blue-100 hover:bg-blue-100 hover:text-white text-blue-100 
+           border border-[#00458b] hover:bg-blue-100 hover:text-white text-[#00458b]
             cursor-pointer hover:text-white flex-1 w-auto"
               onClick={() => onClose(true)}
             >

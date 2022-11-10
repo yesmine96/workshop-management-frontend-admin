@@ -1,4 +1,4 @@
-import Colis from 'components/icons/Colis';
+import Colis from 'components/icons/Manifest';
 import Custumer from 'components/icons/Custumer';
 import Dashboard from 'components/icons/Dashbord';
 import Logout from 'components/icons/Logout';
@@ -10,6 +10,7 @@ import localforage from 'localforage';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { matchPath, useHistory, useLocation } from 'react-router-dom';
 import { useLogout } from 'requests/Auth/auth';
+import sdcLogo from 'assets/png/logo.png';
 
 const SideBar = () => {
   const location = useLocation();
@@ -36,7 +37,7 @@ const SideBar = () => {
         title: 'Gestion des formations',
         link: '/training',
         icon: Colis,
-        activeLink: ['/training'],
+        activeLink: ['/training', '/addTrainig'],
         id: 1,
       },
       {
@@ -47,13 +48,13 @@ const SideBar = () => {
         id: 2,
       },
 
-      {
-        title: 'Gestion des  clients',
-        link: '/clients',
-        icon: Custumer,
-        activeLink: ['/clients'],
-        id: 6,
-      },
+      // {
+      //   title: 'Gestion des  clients',
+      //   link: '/clients',
+      //   icon: Custumer,
+      //   activeLink: ['/clients'],
+      //   id: 6,
+      // },
     ],
     [],
   );
@@ -65,8 +66,8 @@ const SideBar = () => {
   return (
     <div>
       <div className="relative flex flex-col h-screen justify-between  ">
-        <div className="ml-8 pt-10 lg:hidden">
-          <div className="flex py-4 flex-col rounded-[12px] relative w-[max-content] !bg-white shadow-dropdown ">
+        <div className="ml-8 pt-10 lg:hidden flex flex-col h-full pb-10 justify-between items-center align-center">
+          <div className="flex py-4 flex-col rounded-[12px] relative w-[max-content] !bg-white shadow-dropdown mt-[124px]">
             {Items.map(({ icon: Image, ...e }, key) => {
               return (
                 <div
@@ -84,14 +85,14 @@ const SideBar = () => {
                 </div>
               );
             })}
+            <img alt="sidebar_mig" src={sdcLogo} className="w-[150px] py-[20px] mt-[100px] pb-[20px] mx-auto" />
           </div>
         </div>
         {false && (
           <div className="ml-16 w-[max-content] text-center pb-16">
             <div>
               <IconContainer Icon={Manifest} className="m-auto" />
-              <div className="font-Calibre text-2xl">Nom et prénom</div>
-              <div className="text-gray">Nom de la sociéte</div>
+              <div className="font-Calibre text-2xl">Yesmine Ghorbel</div>
             </div>
 
             <div className="flex justify-center items-center text-center gap-x-2 pt-4">
@@ -116,7 +117,6 @@ const SideBar = () => {
                 selected === key ? 'text-orange' : 'text-gray'
               } font-Calibre flex flex-col gap-2 justify-center items-center   hover:text-black duration-200 `}
             >
-              {' '}
               <div className=" cursor-pointer">
                 <Image width="20px" />{' '}
               </div>

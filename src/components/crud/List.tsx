@@ -88,7 +88,7 @@ const List = <T extends TableItem>({
         <DeleteModal
           deleteCall={canDelete}
           id={open ? id : []}
-          msg={'aaa'}
+          msg={'Êtes-vous sûr de vouloir supprimer ces formateurs'}
           onClose={(updated: boolean) => {
             setOpen(false);
           }}

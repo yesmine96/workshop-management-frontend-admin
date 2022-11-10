@@ -3,6 +3,7 @@ import Button from 'components/ux/Button';
 import Input from 'components/ux/Input';
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import classNames from 'utils/classNames';
+import DatePickerInput from './DatePickerInput';
 
 export type Props = {
   button?: boolean;
@@ -20,6 +21,8 @@ const Search: FunctionComponent<Props> = ({ inputClasses, onChange, placeholder,
   const [searchValue, setsearchValue] = useState('');
   const [, setOpen] = useState(false);
   const divRef = useRef<HTMLDivElement>(null);
+  const [dateStart, setDateStart] = useState<any>('');
+  const [dateEnd, setDateEnd] = useState<any>('');
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -29,13 +32,33 @@ const Search: FunctionComponent<Props> = ({ inputClasses, onChange, placeholder,
   return (
     <>
       <form
-        className={classNames('flex  sm:w-auto xl:w-full')}
+        className={classNames('flex  sm:w-auto xl:w-full gap-4')}
         onSubmit={(e) => {
           onSearch && onSearch(searchValue);
           e.preventDefault();
         }}
       >
-        <div className="flex relative w-full   " ref={divRef}>
+        <DatePickerInput
+          value={dateStart}
+          name="dateStart"
+          onChange={(date) => {
+            setDateStart(date);
+          }}
+          showTimeSelect={false}
+          className2="w-[60px]"
+          placeholderText="De"
+        />
+        <DatePickerInput
+          value={dateEnd}
+          name="dateEnd"
+          onChange={(date) => {
+            setDateEnd(date);
+          }}
+          showTimeSelect={false}
+          className2="w-[60px]"
+          placeholderText="Jusqu'à"
+        />
+        <div className="flex relative w-[250px] " ref={divRef}>
           <Input
             className={inputClasses}
             value={searchValue}
@@ -45,7 +68,7 @@ const Search: FunctionComponent<Props> = ({ inputClasses, onChange, placeholder,
               if (e.target.value.length > 0) {
               } else setOpen(false);
             }}
-            placeholder={placeholder || 'Entrer le code du colis'}
+            placeholder={placeholder || 'Rechercher une formation'}
           />
           <div className="rounded absolute w-[40px] h-full flex top-[15px] left-[25px] ">
             <SearchIcon className=" text-white m-auto" />
@@ -54,8 +77,8 @@ const Search: FunctionComponent<Props> = ({ inputClasses, onChange, placeholder,
 
         <Button
           type="submit"
-          className="text-lg rounded-[12px] border-l-2 px-4 py-4	mx-2  
-           text-gray font-CalibreSemiBold bg-gray-100 hover:text-white w-[fit-content]"
+          className="text-[14px] rounded-[12px] border-l-2 px-2 py-4	mx-2  
+           text-white font-CalibreSemiBold bg-[#00458b] hover:text-white w-[fit-content]"
         >
           Rechercher
         </Button>

@@ -58,7 +58,7 @@ const Table = <T extends TableItem>({
                     <th
                       key={header.key}
                       scope="col"
-                      className={`px-6 py-3 text-left text-sm font-bold text-[#818181] font-PopinsMedium tracking-wider bg-[transparent] ${header.className}`}
+                      className={`px-2 py-3 text-left text-sm font-bold text-[#818181] font-PopinsMedium tracking-wider bg-[transparent] ${header.className}`}
                     >
                       <div>
                         {header?.filter ? (

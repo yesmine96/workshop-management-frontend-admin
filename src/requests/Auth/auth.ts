@@ -172,5 +172,53 @@ export const logoutMutation = gql`
 export interface LogoutData {
   logout: string;
 }
+export const updateMutation = gql`
+  mutation updateUser(
+    $id: ID!
+    $fullName: String
+    $email: String
+    $address: String
+    $telephone: String
+    $password: String
+  ) {
+    updateUser(
+      id: $id
+      fullName: $fullName
+      email: $email
+      address: $address
+      telephone: $telephone
+      password: $password
+    ) {
+      id
+      role
+    }
+  }
+`;
+export const verifTokenMutation = gql`
+  mutation verifToken($token: String) {
+    verifToken(token: $token) {
+      id
+      fullName
+    }
+  }
+`;
+
+export const useVerifToken = (
+  options: MutationHookOptions<{ verifToken: { id: string; fullName: string } }, { token: string }> = {},
+) => useLocalMutation(verifTokenMutation, options);
+
+export const useUpdate = (options: MutationHookOptions<{ updateUser: User }, {}> = {}) =>
+  useLocalMutation(updateMutation, options);
 export const useLogout = (options: MutationHookOptions<{ logout: LogoutData }, ResetArguments> = {}) =>
   useLocalMutation(logoutMutation, options);
+export const resetPasswordMutation = gql`
+  mutation resetPassword($email: String, $token: String) {
+    resetPassword(email: $email, token: $token) {
+      id
+    }
+  }
+`;
+
+export const useResetPassword = (
+  options: MutationHookOptions<{ resetPassword: { id: string } }, { email?: string; token?: string }> = {},
+) => useLocalMutation(resetPasswordMutation, options);
