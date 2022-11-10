@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="7" height="28.643" viewBox="0 0 7 28.643">
+  <g id="Groupe_8971" data-name="Groupe 8971" transform="translate(-1747 -499)">
+    <path id="Tracé_84084" data-name="Tracé 84084" d="M0,0V12.643" transform="translate(1750.5 512.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="5"/>
+    <g id="Tracé_84085" data-name="Tracé 84085" transform="translate(1747 499)" fill="#fff">
+      <path d="M 3.5 5 C 2.672899961471558 5 2 4.327099800109863 2 3.5 C 2 2.672899961471558 2.672899961471558 2 3.5 2 C 4.327099800109863 2 5 2.672899961471558 5 3.5 C 5 4.327099800109863 4.327099800109863 5 3.5 5 Z" stroke="none"/>
+      <path d="M 3.5 0 C 5.433000087738037 0 7 1.566999912261963 7 3.5 C 7 5.433000087738037 5.433000087738037 7 3.5 7 C 1.566999912261963 7 0 5.433000087738037 0 3.5 C 0 1.566999912261963 1.566999912261963 0 3.5 0 Z" stroke="none" fill="#fff"/>
+    </g>
+  </g>
+</svg>

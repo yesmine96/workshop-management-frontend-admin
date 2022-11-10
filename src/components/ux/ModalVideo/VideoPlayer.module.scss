@@ -1,0 +1,56 @@
+.volumeButton > input::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  padding: -15px 0px;
+  background: rgb(255, 255, 255);
+}
+.volumeButton > input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #1c57ed;
+  margin: -5px;
+
+  display: none;
+  cursor: pointer;
+}
+
+.volume {
+  height: 0px;
+  border-radius: 24px;
+}
+
+.volume:hover .volume::-webkit-slider-thumb {
+  display: block;
+}
+
+.volumeButton:hover .volume {
+  width: 120px !important;
+  border: 10px solid;
+}
+
+.volumeButton:hover .volume::-webkit-slider-thumb {
+  display: block;
+}
+
+.doubleclickRight {
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  border-radius: 0% 60% 60% 0%;
+}
+
+.doubleclickLeft {
+  // box-shadow: rgb(50 50 93) 0px 30px 60px -12px inset, rgb(0 0 0 / 0%) 0px 18px 36px -18px inset;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  border-radius: 60% 0% 0% 60%;
+  right: -20%;
+}
+
+.playArrow {
+  top: 40%;
+  -webkit-transform: translateX(50%);
+  right: 50%;
+}

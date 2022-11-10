@@ -1,0 +1,12 @@
+.container {
+	&:hover {
+	  .footer {
+		color: white;
+		display: none;
+	  }
+	  .btns {
+		display: flex;
+	  }
+	}
+  }
+  

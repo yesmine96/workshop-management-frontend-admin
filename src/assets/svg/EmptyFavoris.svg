@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="534.555" height="587.576" viewBox="0 0 534.555 587.576">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_148072" data-name="Rectangle 148072" width="47.645" height="45.696" fill="#232053"/>
+    </clipPath>
+  </defs>
+  <g id="Groupe_8946" data-name="Groupe 8946" transform="translate(-676 -236.079)">
+    <path id="Tracé_84030" data-name="Tracé 84030" d="M124.621,0c126.933,0,232.42,186.812,232.42,313.746S293.467,481.571,166.534,481.571,0,509.672,0,382.738-2.312,0,124.621,0Z" transform="matrix(0.914, 0.407, -0.407, 0.914, 884.382, 236.079)" fill="#c2d0df" opacity="0.16"/>
+    <path id="Tracé_84065" data-name="Tracé 84065" d="M111.059,0C224.178,0,318.185,171.453,318.185,287.95S261.53,441.977,148.41,441.977,0,467.767,0,351.27-2.06,0,111.059,0Z" transform="matrix(0.839, -0.545, 0.545, 0.839, 676, 430.16)" fill="#00a1a2"/>
+    <g id="Groupe_8945" data-name="Groupe 8945" transform="translate(853.931 443.569)">
+      <g id="Groupe_8943" data-name="Groupe 8943" transform="translate(53.456 30.79)">
+        <g id="Groupe_8942" data-name="Groupe 8942">
+          <g id="Groupe_8941" data-name="Groupe 8941" clip-path="url(#clip-path)">
+            <path id="Tracé_84060" data-name="Tracé 84060" d="M251.393,249.526a13.449,13.449,0,0,0-10.385,4.915,13.441,13.441,0,0,0-23.832,8.532c0,5.807,3.462,12.523,10.291,19.962a98.926,98.926,0,0,0,12.6,11.379l.943.709.943-.709a99,99,0,0,0,12.6-11.379c6.828-7.439,10.291-14.155,10.291-19.962a13.462,13.462,0,0,0-13.448-13.447Zm0,0" transform="translate(-217.176 -249.453)" fill="#232053"/>
+          </g>
+        </g>
+      </g>
+      <g id="Medical_form" data-name="Medical form" transform="translate(0 0)">
+        <path id="Tracé_84061" data-name="Tracé 84061" d="M202.385,398.737a13.647,13.647,0,0,1-4.363-10.019V235.011a13.685,13.685,0,0,1,13.686-13.685H341.621a13.684,13.684,0,0,1,13.685,13.685V388.717A13.684,13.684,0,0,1,341.621,402.4H233.793" transform="translate(-165.529 -221.326)" fill="none" stroke="#f1f4f8" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.663"/>
+        <path id="Tracé_84062" data-name="Tracé 84062" d="M199.569,389.857s10.816-14.978,19.666-26.035,27.531-14.508,22.615,0-10.816,33.19-11.8,42.04-16.716,17.7-16.716,17.7" transform="translate(-165.383 -208.781)" fill="none" stroke="#f1f4f8" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.663"/>
+        <path id="Tracé_84063" data-name="Tracé 84063" d="M200.825,467.066s-24.335-35.4-28.76-58.258a205.153,205.153,0,0,1-3.687-42.034V292.353A16.224,16.224,0,0,1,184.6,276.129h0a16.224,16.224,0,0,1,16.224,16.224V365.7" transform="translate(-168.332 -216.152)" fill="none" stroke="#f1f4f8" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.663"/>
+        <path id="Tracé_84064" data-name="Tracé 84064" d="M278.424,386.78s-.984,32.72-5.9,48.452-9.832,21.386-9.832,21.386" transform="translate(-159.423 -205.704)" fill="none" stroke="#f1f4f8" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.663"/>
+        <line id="Ligne_313" data-name="Ligne 313" x2="104.699" transform="translate(58.498 108.405)" fill="none" stroke="#f1f4f8" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.663"/>
+        <line id="Ligne_314" data-name="Ligne 314" x2="104.699" transform="translate(58.498 136.304)" fill="none" stroke="#f1f4f8" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.663"/>
+      </g>
+    </g>
+  </g>
+</svg>

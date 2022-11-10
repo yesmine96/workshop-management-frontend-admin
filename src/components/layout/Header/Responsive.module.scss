@@ -1,0 +1,26 @@
+.logoutButton:hover .logoutIcon > path {
+  fill: white !important;
+}
+
+.menuItem:hover .MenuIcon > path {
+  fill: white !important;
+}
+
+.hoverState {
+  transition: 0.7s;
+  background-color: #00a1a2;
+ 
+  z-index: -1;
+  color: white !important;
+}
+
+.menuItem:hover .hoverState {
+  width: 100%;
+  background: #00a1a2 !important;
+  
+
+}
+.menuItem:hover .ptag {
+  color: white !important ;
+}
+

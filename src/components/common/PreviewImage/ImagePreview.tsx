@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import Close from 'components/icons/Close';
 import PreviewIcon from 'components/icons/Preview';
 
@@ -8,15 +7,19 @@ export default function ImagePreview({ ...props }) {
   const [preview, setpreview] = useState(false);
   const [open, setopen] = useState(false);
   return (
-    <div className="relative   " onMouseEnter={() => setpreview(true)} onMouseLeave={() => setpreview(false)}>
+    <div
+      className="relative rounded-lg mt-3  "
+      onMouseEnter={() => setpreview(true)}
+      onMouseLeave={() => setpreview(false)}
+    >
       {preview ? (
         <div
-          className=" absolute w-full h-full flex items-center justify-center"
-          style={{ boxShadow: 'inset 9px 15px 48px 50px #00000057' }}
+          className="rounded-lg absolute w-full h-full flex items-center justify-center"
+          style={{ boxShadow: 'inset 13px 18px 192px 93px rgb(0 0 0 / 70%)' }}
         >
           <div className=" cursor-pointer  flex justify-center items-center">
             <PreviewIcon
-              fill="#white"
+              fill="white"
               onClick={() => {
                 setopen(true);
                 setpreview(false);
@@ -30,7 +33,7 @@ export default function ImagePreview({ ...props }) {
                 setopen(true);
                 setpreview(false);
               }}
-              className="ml-1 text-sm underline cursor-pointer text-black font-bold"
+              className="ml-1 text-sm underline cursor-pointer text-white font-bold"
             >
               Agrandir l'image
             </p>
@@ -38,18 +41,14 @@ export default function ImagePreview({ ...props }) {
         </div>
       ) : null}
       {open && (
-        <div className="fixed !p-[10%]  bg-[#000000bf]   flex justify-center items-center h-full w-full top-0 right-0 z-50">
+        <div className="fixed  bg-green-200  z-10 flex justify-center items-center h-full w-full top-0 right-0">
           <Close
             fill="white"
             onClick={() => setopen(false)}
             className="absolute top-8 right-8 cursor-pointer hover:h-8"
             height={25}
           />
-          <img
-            src={src}
-            alt="dssd"
-            className=" p-10 4xl:p-48 3xl:p-48 xl:p-48 lg:p-0  md:p-0  lg:w-full w-auto h-auto"
-          />
+          <img src={src} alt="dssd" className=" 4xl:p-48 3xl:p-48 xl:p-48 lg:p-0  md:p-0  lg:w-full w-auto h-auto" />
         </div>
       )}
       {false && (

@@ -1,0 +1,9 @@
+.menuList {
+  overflow-y: scroll;
+  position: absolute;
+  width: 100%;
+  display: grid;
+  :first-letter {
+    text-transform: capitalize;
+  }
+}

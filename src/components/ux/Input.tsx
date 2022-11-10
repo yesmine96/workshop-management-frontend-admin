@@ -1,5 +1,7 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 import classNames from 'utils/classNames';
+import PasswordIcon from '../icons/Password';
+import { ReactComponent as WrongPassword } from '../../assets/svg/Passwordyellow.svg';
 import InputWrapper from './InputWrapper';
 
 export type TextFieldProps = {
@@ -9,8 +11,6 @@ export type TextFieldProps = {
   iconRight?: ReactNode;
   addnote?: boolean;
   label?: string;
-  labelClassName?: string;
-  errorClassName?: string;
   handleError?: boolean;
   textarea?: boolean;
   errorColor?: string;
@@ -30,24 +30,20 @@ const Input: FunctionComponent<TextFieldProps> = ({
   label,
   handleError = true,
   textarea = false,
-  errorColor = '!text-[#FF4040]',
-  errorClassName,
-  className,
-  labelClassName,
+  errorColor = 'red-250',
   ...rest
 }) => {
-  const [showPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const inputHeight = 'h-12 2xl:h-12';
 
   const inputClasses = classNames(
-    'bg-[#F5F5F5] w-full	border-[1px] border-[#C2C2C2] placeholder-[#C2C2C2] rounded-xl focus:ring-0 focus:outline-none p-[1rem] py-4 md:rounded-3',
-    'text-base font-regular  bg-white active:bg-white',
+    'w-full	border rounded-5 focus:ring-0 focus:outline-none p-7 py-4',
+    'text-base font-regular border-blue-80 bg-white active:bg-white',
     textarea ? 'resize-none' : inputHeight,
-    error && `border-[#FF4040] border-2 focus:border-[#FF4040]`,
+    error && `border-${errorColor} border-2 focus:border-${errorColor}`,
     iconLeft && 'pl-16',
     addnote && 'pl-2.5 !important',
-    className,
   );
 
   return (
@@ -57,8 +53,6 @@ const Input: FunctionComponent<TextFieldProps> = ({
       iconLeft={iconLeft}
       errorColor={errorColor}
       label={label}
-      errorClassName={errorClassName}
-      labelClassName={labelClassName}
       handleError={handleError}
       classes={{ iconRight: textarea ? `top-0 ${inputHeight}` : undefined }}
     >
@@ -67,20 +61,16 @@ const Input: FunctionComponent<TextFieldProps> = ({
       ) : (
         <input className={inputClasses} type={type === 'password' && showPassword ? 'text' : type} {...(rest as any)} />
       )}
-      {/* {type === "password" && (
+      {type === 'password' && (
         <div
           className="absolute inset-y-0 right-5 flex items-center justify-center"
           onClick={() => setShowPassword(!showPassword)}
         >
           <button type="button" className="focus:outline-none ">
-            {!error ? (
-              <PasswordIcon fill="#111136" width="25px" />
-            ) : (
-              <WrongPassword className="w-6" />
-            )}
+            {!error ? <PasswordIcon fill="#111136" width="25px" /> : <WrongPassword className="w-6" />}
           </button>
         </div>
-      )} */}
+      )}
     </InputWrapper>
   );
 };

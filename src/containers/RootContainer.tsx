@@ -1,45 +1,54 @@
-import Route from 'components/ui/Route/Route';
-import Register from 'containers/Register/Register';
+import { useState, useEffect } from 'react';
+import { Redirect, Switch } from 'react-router-dom';
+import PreviousMenuContext from 'contexts/PreviousMenuState';
+import { MenuStatesValues } from 'contexts/MenuContext';
 import UserContext from 'contexts/UserContext';
-import { useEffect, useState } from 'react';
-import { Switch } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { User } from 'requests/Auth/types';
-import Trainer from './Trainer';
+import Route from 'components/ui/Route/Route';
+import { User } from 'requests/types';
+import startup from 'utils/startup';
 
-import HomeContainer from './Home';
+import CardIdContext from 'contexts/CardIdContext';
+import ProtectedRoute from 'components/ui/Route/ProtectedRoute';
+import DashboardAdmin from './DashboardAdmin/DashboardAdmin';
+
+import HomeContainer from './Home/HomeContainer';
 import LoginContainer from './Login/LoginContainer';
-import RenewPassword from './Login/RenewPassword';
+import DetailsContainer from './DetailsTraining/DeatilsTraining';
+import NotFoundContainer from './NotFoundConatiner/NotFoundConatiner';
 
-import AddTraining from './Training/AddTraining';
-import Training from './Training/Training';
-import DetailsTraining from './Training/DetailsTraining';
-import GestionProfil from './GestionProfil';
 
 const RootContainer = () => {
   const [user, setUser] = useState(null as User | null);
+  const [startupEnded, setStartupEnded] = useState(false);
+  const [cardId, setCardId] = useState<string | any>('');
+  const [PreviousStates, setPreviousStates] = useState<MenuStatesValues | any>(MenuStatesValues.mainMenu);
+  useEffect(() => {
+    startup().then((u) => {
+      setUser(u);
+      setStartupEnded(true);
+    });
+  }, []);
 
-  useEffect(() => {}, []);
+  if (!startupEnded) return <div />;
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <ToastContainer />
-      <Switch>
-        <Route header={false} protected path="/register" exact component={Register} />
-        <Route path="/" exact component={HomeContainer} />
-        <Route path="/Trainer" exact component={Trainer} />
-        <Route path="/training" exact component={Training} />
-        {['/addTrainig', '/addTrainig/:id'].map((path, index) => (
-          <Route path={path} component={AddTraining} exact key={index} />
-        ))}
-
-        <Route path="/DetailsTraining/:id" exact component={DetailsTraining} />
-        <Route protected header={false} path="/login" exact component={LoginContainer} />
-
-        <Route protected path="/gestionprofil" exact component={GestionProfil} />
-        <Route protected header={false} path="/RenewPassword" exact component={RenewPassword} />
-      </Switch>
+      <PreviousMenuContext.Provider value={{ PreviousStates, setPreviousStates }}>
+        <CardIdContext.Provider value={{ cardId, setCardId }}>
+          <Switch>
+            <ProtectedRoute footer={false} header={false} path="/admin"  component={DashboardAdmin} />
+    
+            <Route path="/"  footer={false}  exact  component={HomeContainer} />
+       
+            {/* Page Questionnaire
+        Page Questionnaire Partie Final */}
+            <Route path="/training/:id" exact  component={DetailsContainer} />
+            <Route footer={false} header={false} path="/login" exact component={LoginContainer} />
+            <Route path="/404" component={NotFoundContainer} />
+            <Redirect from="*" to="/404" />
+          </Switch>
+        </CardIdContext.Provider>
+      </PreviousMenuContext.Provider>
     </UserContext.Provider>
   );
 };

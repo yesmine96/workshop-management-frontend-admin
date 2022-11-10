@@ -1,0 +1,37 @@
+
+
+.list {
+  grid-area: list;
+}
+
+.data {
+  grid-area: data;
+}
+
+.medecine {
+  color: #f8a609;
+}
+.activeMedecine {
+  color: white;
+}
+.medecineRoot {
+  &:hover {
+    .medecine {
+      color: white;
+    }
+  }
+}
+.menu {
+  right: 0;
+  margin: auto;
+}
+.titlesMenu {
+  > svg {
+    color: #f8a609;
+  }
+  &:hover {
+    > svg {
+      color: white;
+    }
+  }
+}

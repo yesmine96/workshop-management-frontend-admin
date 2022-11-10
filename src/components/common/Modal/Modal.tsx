@@ -38,21 +38,20 @@ const Modal = ({
         backdropFilter: 'blur(10px)',
       }}
       className={classNames(
-        'z-50 flex justify-center items-center fixed w-full h-full top-0 left-0 md:px-10  overflow-hidden bg-[#3131317d]',
+        'z-50 flex justify-center items-center fixed w-full h-full top-0 left-0 z-13 backdrop-blur-md overflow-hidden bg-blue-700',
         containerClassName,
       )}
     >
       <div
         className={classNames(
-          'flex items-center justify-center bg-white relative rounded-xl shadow-1 ',
+          'flex items-center justify-center relative bg-white w-127 rounded-5 shadow-1',
           className,
           `${responsivestate && 'w-full h-full'}`,
-          'p-0',
         )}
       >
         <Close
           className={classNames(
-            'absolute top-8 right-9 cursor-pointer  text-[black] z-50',
+            'absolute top-8 right-9 cursor-pointer  z-50 ',
             'ease-linear transform hover:scale-125 transition duration-500 z-50',
           )}
           height={24}

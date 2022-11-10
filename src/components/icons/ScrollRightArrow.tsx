@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function ScrollRightArrow({ fill = 'currentColor', ...props }: React.SVGProps<SVGSVGElement>) {
+function ScrollRightArrow({  ...props }: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path

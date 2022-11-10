@@ -1,6 +1,6 @@
-import { RefObject, useEffect } from 'react';
+import { useEffect, RefObject } from 'react';
 
-export default function DoubleClick(handler: (e: Event) => void, ...refs: RefObject<HTMLElement | null>[]) {
+export default function (handler: (e: Event) => void, ...refs: RefObject<HTMLElement | null>[]) {
   useEffect(() => {
     const listener = (event: Event) => {
       if (refs.find((ref) => ref.current && ref.current.contains(event.target as any))) {
@@ -8,6 +8,7 @@ export default function DoubleClick(handler: (e: Event) => void, ...refs: RefObj
       }
       handler(event);
     };
+
     document.addEventListener('mousedown', listener);
     document.addEventListener('touchstart', listener);
 

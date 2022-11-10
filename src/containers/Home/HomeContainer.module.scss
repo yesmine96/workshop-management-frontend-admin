@@ -1,0 +1,31 @@
+.container2 {
+  display: grid;
+  grid-template-columns: 0 1fr 10rem;
+  grid-template-areas:
+    'title title title'
+    'result result result';
+  gap: 0;
+  @media (max-width: 1500px) {
+    grid-template-columns: 0 1fr 10rem;
+    grid-template-areas:
+    'title title title'
+    'count count count'
+    'result result result';
+  }
+}
+
+.title {
+  grid-area: title;
+}
+
+.filter {
+  grid-area: filter;
+}
+
+.result {
+  grid-area: result;
+}
+
+.count {
+  grid-area: count;
+}

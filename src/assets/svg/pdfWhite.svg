@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="34.666" height="38.498" viewBox="0 0 34.666 38.498">
+    <defs>
+        <style>.a{fill:#FFFFFF;}.b{fill:#d81d1d;}.c{fill:#fff;font-size:10px;font-family:Aileron-Bold, Aileron;font-weight:700;}</style>
+    </defs>
+    <g transform="translate(-1222 -825.814)">
+        <path class="a" d="M-605.118-26.5h-26a1.966,1.966,0,0,0-1.91,2.014V-19.7h1.569v-4.785a.351.351,0,0,1,.341-.359h26a.35.35,0,0,1,.341.359V9.984a.351.351,0,0,1-.341.359h-26a.351.351,0,0,1-.341-.359V-8.331h-1.569V9.984A1.966,1.966,0,0,0-631.117,12h26a1.967,1.967,0,0,0,1.911-2.014v-34.47A1.967,1.967,0,0,0-605.118-26.5Z" transform="translate(1859.873 852.314)" />
+        <rect class="b" width="30.604" height="13.195" rx="1" transform="translate(1222 833.182)" />
+        <text class="c" transform="translate(1228 844.182)">
+            <tspan x="0" y="0">PDF</tspan>
+        </text>
+    </g>
+</svg>

@@ -1,31 +1,33 @@
-import Header from 'components/layout/header';
-import SideBar from 'components/layout/sidebar';
+import { useContext } from 'react';
+import { Route as BaseRoute, Redirect, RouteProps as BaseRouteProps, useLocation } from 'react-router-dom';
 
-import { Route as BaseRoute, RouteProps as BaseRouteProps } from 'react-router-dom';
+import UserContext from 'contexts/UserContext';
+import { encodeUri } from 'utils/url';
+
+import Header from 'components/layout/Header/header';
+import Footer from 'components/layout/Footer/Footer';
+
+import classes from './route.module.scss';
 
 export interface RouteProps extends BaseRouteProps {
   protected?: boolean;
   header: boolean;
+  footer?: boolean;
 }
 
-const Route = ({ protected: protectedProp, header, ...rest }: RouteProps) => {
+const Route = ({ protected: protectedProp, header, footer = true, ...rest }: RouteProps) => {
+  const { user } = useContext(UserContext);
+  const location = useLocation();
+
+  if (protectedProp && !user) {
+    return <Redirect to={{ pathname: '/login', search: encodeUri({ from: location.pathname + location.search }) }} />;
+  }
+
   return (
-    <div className="flex h-screen">
-      {header ? (
-        <>
-          <div className="flex-[0.1] 2xl:flex-[0.1] xl:flex-[0]  ">
-            <SideBar />
-          </div>
-          <div className=" flex-[0.9] 2xl:flex-[0.9] xl:flex-[1] py-[46px] px-[36px] xl:px-[10px] xl:mb-[40px]  overflow-auto ">
-            <Header />
-            <BaseRoute {...rest} />
-          </div>
-        </>
-      ) : (
-        <div className=" flex-[1] 2xl:flex-[1] xl:flex-[1]    overflow-hidden ">
-          <BaseRoute {...rest} />
-        </div>
-      )}
+    <div className={classes.container}>
+      {header && <Header />}
+      <BaseRoute {...rest} />
+      {footer && <Footer />}
     </div>
   );
 };

@@ -7,9 +7,6 @@ export type TextFieldProps = {
   iconLeft?: ReactNode;
   iconRight?: ReactNode;
   errorColor?: string;
-  errorClassName?: string;
-  labelClassName?: string;
-
   children: React.ReactNode;
   handleError?: boolean;
   classes?: {
@@ -23,16 +20,14 @@ const InputWrapper: FunctionComponent<TextFieldProps> = ({
   error,
   iconRight,
   label,
-  errorColor = '!text-[#FF4040]',
+  errorColor = 'red-250',
   handleError = true,
   children,
-  labelClassName,
-  errorClassName,
   classes = {},
 }) => {
   return (
-    <div className={classNames('pb-3', 'w-full relative')}>
-      {label && <div className={`text-[#00458b] text-md font-regular mb-1 md:text-sm ${labelClassName}`}>{label}</div>}
+    <div className={classNames(handleError && 'pb-2', 'w-full')}>
+      {label && <div className="text-blue-650 text-md font-regular mb-2.5 md:text-sm">{label}</div>}
       <div className="flex justify-center items-center relative">
         {iconLeft && (
           <div className={classNames('absolute inset-y-0 left-5 flex items-center justify-center', classes.iconsLeft)}>
@@ -49,14 +44,7 @@ const InputWrapper: FunctionComponent<TextFieldProps> = ({
         )}
       </div>
       {handleError && error && (
-        <div
-          className={classNames(
-            'lg:text-xs text-sm h-5 relative left-1',
-            `${errorColor} absolute`,
-            errorClassName,
-            '!absolute',
-          )}
-        >
+        <div className={classNames('2xl:text-xs mt-1.5 text-sm h-5 relative left-1 sm:text-10', `text-${errorColor}`)}>
           {error}
         </div>
       )}

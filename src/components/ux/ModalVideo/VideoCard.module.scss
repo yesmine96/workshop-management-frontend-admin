@@ -1,0 +1,305 @@
+$media-2xl: 'only screen and (max-width : 1500px)';
+$media-xl: 'only screen and (max-width : 1279px)';
+$media-lg: 'only screen and (max-width : 1023px)';
+$media-md: 'only screen and (max-width : 767px)';
+$media-sm: 'only screen and (max-width : 639px)';
+
+.container {
+  min-height: 400px;
+  &:hover {
+    .footer {
+      display: none;
+    }
+    .btns {
+      display: flex;
+    }
+    .TitleVideo {
+      display: none;
+    }
+    .video {
+      display: none;
+    }
+  }
+}
+// description Section
+.DescriptionSection {
+  flex: 0.2;
+}
+.detailButton {
+
+  height: 50px !important;
+}
+// Video
+
+.myVideo {
+  height: 92%;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.video {
+  border-radius: 5px 5px 0px 0px;
+}
+
+.progress-time {
+  display: flex;
+  justify-content: space-evenly;
+  flex: 1;
+}
+
+.playButton {
+  &:focus {
+    outline: none;
+  }
+}
+
+.playerButton {
+  &:focus {
+    outline: none;
+  }
+}
+
+.playerControls {
+  height: 71px;
+  transition: 0.3s;
+  border-radius: 0px 0px 5px 5px;
+  background: #00a1a2;
+}
+
+.playButton {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  color: black;
+  background: white;
+}
+.playerButton {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  margin: 0px 1px;
+  border: none;
+  color: black;
+  background: white;
+}
+
+.volumeButton {
+  &:hover {
+    .volume {
+      width: 120px !important;
+      border: 10px solid;
+    }
+  }
+  width: 24px;
+  height: 24px;
+}
+
+.volume {
+  height: 0px;
+  border-radius: 24px;
+
+}
+
+.volumeButton > {
+  input {
+    top: -60px;
+    -webkit-appearance: none;
+    background: transparent;
+    transition: 0.3s;
+    transform: rotate(-90deg);
+  }
+}
+
+.volumeButton > {
+  input {
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.videoSection {
+  border-radius: 0px 1rem 1rem 0px;
+  flex: 0.8;
+}
+.videoProgressFilled {
+  background-color: rgba(255, 0, 0, 0.14);
+  border-radius: 15px 0px 0px 15px;
+}
+
+.videoProgress {
+  width: 300px;
+  transition: 0.3s;
+  flex: 5 1;
+}
+
+.fullscreenVideo {
+  .videoPlayer > {
+    * {
+      overflow: hidden !important;
+    }
+  }
+  max-width: unset !important;
+  transition: 0.5s;
+  width: 100%;
+  height: 100%;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+}
+
+// video Overlay
+.overlay {
+  width: 100%;
+  height: 84%;
+  position: absolute;
+}
+
+.modalContent {
+  @media #{$media-md} {
+    width: 100% !important;
+  }
+  .modalContainerChild {
+    padding: 15px 1px;
+  }
+}
+.hoverButtons1 {
+  position: absolute;
+  top: 10%;
+  right: 6px;
+ 
+  @media #{$media-lg} {
+    top: 20% !important;
+  }
+}
+.hoverButtons2 {
+  top: 20%;
+  right: 6px;
+  position: absolute;
+  @media #{$media-lg} {
+    top: 32% !important;
+  }
+  
+}
+
+.hoverButtons3 {
+  top: 30%;
+  right: 6px;
+  position: absolute;
+  @media #{$media-lg} {
+    top: 32% !important;
+  }
+  
+}
+
+
+.hoverButtons {
+  color: #00a1a2;
+  fill: #00a1a2;
+  &:hover {
+    .hoverText {
+      opacity: 1 !important;
+      fill: white !important;
+        color: white
+    }
+    .qrClass > {
+      svg {
+        fill: white !important;
+        color: white
+      }
+    }
+    background-color: #00a1a2;
+    height: 50px;
+    border-radius: 5px 0px 0px 5px;
+    color: white;
+    fill: white;
+  }
+  padding-left: 27px;
+  height: 50px;
+  transition: 0.5s;
+}
+
+.ButtonSection {
+  padding: 12px;
+}
+
+.modalContainer {
+  @media #{$media-md} {
+    display: flex;
+
+    .Videoborder {
+      padding: 0px;
+    }
+  }
+}
+.hoverText {
+  opacity: 0 !important;
+}
+
+.qrClass > {
+  svg {
+    fill: #1b57ed;
+    position: absolute;
+    right: 10px;
+  }
+}
+
+.videoPlayer {
+  &:hover {
+    .overlay {
+      display: flex;
+    }
+  }
+  @media #{$media-md} {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+.videoTitle {
+  padding: 15px;
+  color: white;
+}
+.videoTitle > {
+  p {
+    color: #d0c4c4;
+  }
+}
+
+@media #{$media-md} {
+  .hideSection {
+    display: none;
+  }
+
+  // .playerControls {
+  //   flex-direction: row-reverse;
+  // }
+  .ButtonSection {
+    flex-direction: row-reverse;
+  }
+  .modalContainer > {
+    svg {
+      position: fixed;
+      top: 14px;
+      right: 20px;
+      z-index: 60;
+    }
+  }
+}
+// Qrcode
+.iconHover {
+  &:hover {
+    opacity: 0;
+  }
+  height: 22px !important;
+  width: 22px !important;
+  right: 20px;
+  height: 22px;
+}
+
+.linkSVG > {
+  svg {
+    height: 25px !important;
+    width: 26px !important;
+    fill: #1b57ed;
+  }
+}

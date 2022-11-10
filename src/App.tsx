@@ -1,7 +1,8 @@
 import { ApolloProvider } from '@apollo/client';
 import RootContainer from 'containers/RootContainer';
 import { BrowserRouter } from 'react-router-dom';
-import { client } from 'requests/Configs/client';
+import { client } from 'requests/client';
+import 'moment/locale/fr';
 
 const App = () => {
   return (
