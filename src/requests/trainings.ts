@@ -4,7 +4,7 @@ import { useLocalLazyQuery, useLocalMutation, useLocalQuery } from 'hooks/apollo
 
 
 export const trainingsQuery = gql`
-  query trainings($perPage: Int $idCategory:ID $idSubCategories:ID $name:String) {
+  query trainings($perPage: Int $idCategory:ID $idSubCategories:[ID] $name:String) {
     trainings(perPage: $perPage, sort: "name",idCategory:$idCategory idSubCategories:$idSubCategories name:$name) {
       data {
         id
@@ -12,18 +12,13 @@ export const trainingsQuery = gql`
         price
         membersNumber
         description
-        image
-        dateEnd
-        dateStart
+       
         idTrainer{ fullName}
         idCategory {
           id
           name
         }
-    idSubCategories{
-      id
-      name
-    }
+    idSubCategories{id}
     
       }
     }
@@ -128,36 +123,7 @@ export const useLazyMedicines = (options: QueryHookOptions<{ trainings: any }, a
   useLocalLazyQuery(trainingsQuery, options);
 
 
-export const MedicamentsCountQuery = gql`
-  query trainings($dci: ID, $classe: ID) {
-    trainings(dci: $dci, classe: $classe) {
-      count
-      page
-      data {
-        id
-        name
-        image
-        video {
-          url
-          qrCode
-        }
-        qr {
-          seringue
-          stylo
-        }
-        classe {
-          id
-          name
-        }
-        dci {
-          id
-          name
-        }
-      }
-      totalPages
-    }
-  }
-`;
+
 export const addFavouriteQuery = gql`
   mutation CreateFavorites($training: ID!) {
     createFavorites(training: $training) {
@@ -196,7 +162,7 @@ export const TrainingByIdQuery = gql`
       price
       membersNumber
       description
-      image
+  
       idTrainer{ fullName}
       idCategory {
         id
